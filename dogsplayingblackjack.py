@@ -2,7 +2,7 @@
 import random
 options = ("")
 suits = ["Spades", "Diamonds", "Hearts", "Clubs"]
-numbers = ["Ace",2,3,4,5,6,7,8,9]
+numbers = ["Ace",2,3,4,5,6,7,8,9,10]
 chips = 5000
 class player:
     cards_handed = []
