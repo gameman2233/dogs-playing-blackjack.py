@@ -56,11 +56,13 @@ def stand():
         player_win()
 # Self-explanatory, player win event
 def player_win():
+    print("--------------")
     print("You win!")
     player.chips = player.chips + player.bet*2
     print("New chips:", player.chips)
 # Blackjack pays 3:1, if you get a 10 or face and an ace, you win round 1 
 def turn_one_win():
+    print("--------------")
     print("You win!")
     player.chips = player.chips + player.bet*2
     player.chips = player.chips + player.bet
@@ -81,12 +83,14 @@ def turn_one_loss():
     player_lose()
 # Tie State
 def push():
+    print("--------------")
     print("Push")
     player.chips = player.chips + player.bet
     print("New chips:", player.chips)
     player.bet = 0
 # Lose State
 def player_lose():
+    print("--------------")
     print("You lose.")
     print("New chips:", player.chips)
     player.bet = 0
@@ -104,7 +108,7 @@ def dog_dealer():
     print("     / - \\")
     print("     |    \\")
     print("     || (__V")
-    print("--------------------")
+    print("-------------------------")
 # Used to draw a card from the deck
 def random_card(user):
     suit_rand=random.choice(suits)
@@ -234,14 +238,13 @@ def play():
         dog_dealer()
         chip_display()
         turn_one(dealer)
-        print("--------------")
+        print("-------------------------")
         turn_one(player)
         print(player.score)
         if dealer.score == 21 and dealer.score != player.score:
             turn_one_loss()
             continue
         elif player.score == 21 and dealer.score != player.score:
-            print("Player wins.")
             turn_one_win()
             continue
         elif player.score == 21 and dealer.score == 21:
