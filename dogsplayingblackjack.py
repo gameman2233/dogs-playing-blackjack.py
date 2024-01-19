@@ -220,7 +220,7 @@ def prep():
             clear()
             break
 # Plays blackjack
-def play():
+def play(user):
     while True:
         while True:
             prelude = input("Would you like to play blackjack?, Select Yes or No: ")
@@ -232,6 +232,8 @@ def play():
                 break
         if prelude == "No":
             clear()
+            print("Final Score:")
+            chip_display()
             break
         prep()
         game_in_progress = True
@@ -239,25 +241,25 @@ def play():
         chip_display()
         turn_one(dealer)
         print("-------------------------")
-        turn_one(player)
-        print(player.score)
-        if dealer.score == 21 and dealer.score != player.score:
+        turn_one(user)
+        print(user.score)
+        if dealer.score == 21 and dealer.score != user.score:
             turn_one_loss()
             continue
-        elif player.score == 21 and dealer.score != player.score:
+        elif user.score == 21 and dealer.score != user.score:
             turn_one_win()
             continue
-        elif player.score == 21 and dealer.score == 21:
+        elif user.score == 21 and dealer.score == 21:
             push()
-        if (player.score == 9 or player.score == 10 or player.score == 11) and (player.has_ace == False) or (player.score == 16 or player.score == 17 or player.score == 18) and (player.has_ace == True):
+        if (user.score == 9 or user.score == 10 or user.score == 11) and (user.has_ace == False) or (user.score == 16 or user.score == 17 or user.score == 18) and (user.has_ace == True):
             options = input("Would you like to Hit, Stand or Double? ")
-            player.can_double = True
+            user.can_double = True
         else:
             options = input("Would you like to Hit or Stand? ")
         while True:
-            if options == "Double" and player.can_double == True:
-                if player.chips > player.bet:
-                    player.bet = player.bet * 2
+            if options == "Double" and user.can_double == True:
+                if user.chips > user.bet:
+                    user.bet = user.bet * 2
                     hit()
                     options = "Stand"
                 else:
@@ -267,13 +269,11 @@ def play():
             if options == "Hit":
                 hit()
                 options = (" ")
-            if player.score >=22:
+            if user.score >=22:
                 player_lose()
                 break
             options = input("Would you like to Hit or Stand? ")
             
         stand()
 
-
-
-play()
+play(player)
