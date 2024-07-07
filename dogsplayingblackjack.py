@@ -224,13 +224,13 @@ def play(user):
     while True:
         while True:
             prelude = input("Would you like to play blackjack?, Select Yes or No: ")
-            if prelude == "Yes":
+            if prelude.casefold() == "Yes":
                 clear()
                 prelude = ""
                 break
-            elif prelude == "No":
+            elif prelude.casefold() == "No":
                 break
-        if prelude == "No":
+        if prelude.casefold() == "No":
             clear()
             print("Final Score:")
             chip_display()
@@ -264,9 +264,9 @@ def play(user):
                     options = "Stand"
                 else:
                     print("You can not afford to double.")
-            if options == "Stand":
+            if options.casefold() == "Stand":
                 break
-            if options == "Hit":
+            if options.casefold() == "Hit":
                 hit()
                 options = (" ")
             if user.score >=22:
